@@ -16,7 +16,7 @@ pip install tqdm
 
 ## 工具介绍
 
-[Information reading.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/Information reading.py)：读取同根目录下.fits文件的基本信息，并输出.fits文件的前三行作为示例，使得fits文件更加可视化。
+[Information reading.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/Information%20reading.py)：读取同根目录下.fits文件的基本信息，并输出.fits文件的前三行作为示例，使得fits文件更加可视化。
 
 _此工具默认只读取根目录下首字母排序最靠前的单个.fits文件，以防电脑卡顿_
 
