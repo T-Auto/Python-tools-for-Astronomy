@@ -18,6 +18,6 @@ pip install tqdm
 
 [Information reading.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/Information%20reading.py)：读取同根目录下.fits文件的基本信息，并输出.fits文件的前三行作为示例，使得fits文件更加可视化。
 
-_此工具默认只读取根目录下首字母排序最靠前的单个.fits文件，以防电脑卡顿_
+_※此工具默认只读取根目录下首字母排序最靠前的单个.fits文件，以防电脑卡顿※_
 
 [verification.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/verification.py)：可以进行星表交叉，将计算数据与公开数据进行对比，并计算相对误差的百分比。
