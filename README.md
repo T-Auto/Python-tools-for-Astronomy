@@ -16,7 +16,7 @@ pip install tqdm
 
 ## Tool Introduction
 
-[Information reading.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/Information reading.py): Reads basic information from .fits files in the same root directory and outputs the first three lines of the .fits file as an example, making .fits files more visually accessible.
+[Information reading.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/Information%20reading.py): Reads basic information from .fits files in the same root directory and outputs the first three lines of the .fits file as an example, making .fits files more visually accessible.
 
 _This tool defaults to reading only the single .fits file that is alphabetically first in the root directory to prevent computer lag._
 
