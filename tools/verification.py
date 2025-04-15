@@ -5,8 +5,6 @@ import logging
 import os
 from tqdm import tqdm
 
-# --- 可配置项 ---
-
 # 要比较的参数列: ('输出列名', '参考列名', '显示名称')
 PARAMS_TO_COMPARE = [
     ('teff_est', 'teff', 'Teff'),
@@ -14,26 +12,19 @@ PARAMS_TO_COMPARE = [
     ('feh_est', 'feh', '[Fe/H]')
 ]
 
-# --- 文件名配置 (填写相对路径) ---
-
 OUTPUT_FITS_FILENAME = 'output.fits'
 REFERENCE_CATALOG_FILENAME = 'dr11_v1.1_LRS_stellar.fits'
 VERIFICATION_MD_FILENAME = 'verification_report_zh.md'
 
-# --- 获取脚本所在目录 ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# --- 构建完整文件路径 ---
 OUTPUT_FITS_PATH = os.path.join(SCRIPT_DIR, OUTPUT_FITS_FILENAME)
 REFERENCE_CATALOG_PATH = os.path.join(SCRIPT_DIR, REFERENCE_CATALOG_FILENAME)
 VERIFICATION_MD_PATH = os.path.join(SCRIPT_DIR, VERIFICATION_MD_FILENAME)
 
-# --- 日志设置 ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# --- 辅助函数 ---
 def calculate_percentage_difference(estimated, reference):
-    """计算百分比差异，处理无效值。"""
     if reference is None or not np.isfinite(reference) or np.isclose(reference, 0):
         return np.nan
     if estimated is None or not np.isfinite(estimated):
@@ -44,17 +35,14 @@ def calculate_percentage_difference(estimated, reference):
         return np.nan
 
 def format_value(value, precision=2):
-    """格式化数值 (处理 N/A)。"""
     if value is None or not np.isfinite(value):
         return "N/A"
     return f"{value:.{precision}f}"
 
 def format_percentage(value, precision=1):
-    """格式化百分比 (处理 N/A)。"""
     formatted_val = format_value(value, precision)
     return f"{formatted_val}%" if formatted_val != "N/A" else "N/A"
 
-# --- 主逻辑 ---
 if __name__ == "__main__":
     logging.info("开始验证流程...")
 
@@ -89,7 +77,6 @@ if __name__ == "__main__":
         logging.error(f"加载参考星表时出错: {e}")
         exit()
 
-    # 检查必需列
     required_output_cols = ['obsid'] + [p[0] for p in PARAMS_TO_COMPARE]
     missing_output_cols = [col for col in required_output_cols if col not in output_table.colnames]
     if missing_output_cols:
@@ -102,7 +89,6 @@ if __name__ == "__main__":
         logging.error(f"错误: 参考表缺少列: {', '.join(missing_ref_cols)}")
         exit()
 
-    # 2. 构建参考星表查找字典 (obsid -> 行索引)
     logging.info("构建参考星表查找字典...")
     ref_lookup = {}
     duplicate_obsids = 0
@@ -134,7 +120,6 @@ if __name__ == "__main__":
         logging.error(f"构建查找字典时出错: {e}")
         exit()
 
-    # 3. 迭代、比较并存储结果
     logging.info("比较结果与参考星表...")
     comparison_data = []
     not_found_count = 0
@@ -185,7 +170,6 @@ if __name__ == "__main__":
     if not_found_count > 0:
         logging.warning(f"{not_found_count} 个 obsid 未在参考星表中找到。")
 
-    # 4. 生成 Markdown 表格
     if not comparison_data:
         logging.warning("未找到匹配条目，无法生成报告。")
         markdown_content = "# 验证报告\n\n结果文件与参考星表无匹配项。\n"
@@ -219,7 +203,6 @@ if __name__ == "__main__":
         markdown_content += "\n".join(data_rows)
         markdown_content += "\n"
 
-    # 5. 写入报告文件
     try:
         with open(VERIFICATION_MD_PATH, 'w', encoding='utf-8') as f:
             f.write(markdown_content)
