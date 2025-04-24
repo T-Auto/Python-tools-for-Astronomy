@@ -30,3 +30,5 @@ ALPHA_RANGE = (-0.2, 1.2)  # Alpha element enhancement range
 [verification.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/verification.py): Performs star catalog cross-matching to compare calculated data with public data and calculate the percentage relative error. Generates a detailed validation report in Markdown format.
 
 [move.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/move.py): Filters and moves FITS files based on specified parameter ranges (temperature, gravity, metallicity, and alpha element enhancement). Creates a new directory with a name that indicates the filter criteria.
+
+[interpolate_spectra.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/interpolate_spectra.py): Performs metallicity interpolation on PHOENIX spectral models. Finds matching pairs of spectra with identical parameters (temperature, gravity, alpha enhancement) but different metallicities (e.g., Z-0.0 and Z+0.5), and creates interpolated spectra at the intermediate metallicity (e.g., Z+0.25). 

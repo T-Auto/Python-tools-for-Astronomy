@@ -30,3 +30,5 @@ ALPHA_RANGE = (-0.2, 1.2)  # Alpha元素增强范围
 [verification.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/verification.py)：进行星表交叉匹配，将计算数据与公开数据进行对比，并计算相对误差的百分比。生成详细的Markdown格式验证报告。
 
 [move.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/move.py)：根据指定的参数范围（温度、重力、金属丰度和Alpha元素增强）筛选并移动FITS文件。创建一个名称包含筛选条件的新目录来存放筛选后的文件。
+
+[interpolate_spectra.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/interpolate_spectra.py)：对PHOENIX光谱模型进行金属丰度插值。从两个不同金属丰度的光谱目录（例如Z-0.0和Z+0.5）中找到相同参数（温度、重力、alpha元素丰度）的文件对，进行线性插值产生中间金属丰度（如Z+0.25）的光谱。
