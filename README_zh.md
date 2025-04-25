@@ -32,3 +32,5 @@ ALPHA_RANGE = (-0.2, 1.2)  # Alpha元素增强范围
 [move.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/move.py)：根据指定的参数范围（温度、重力、金属丰度和Alpha元素增强）筛选并移动FITS文件。创建一个名称包含筛选条件的新目录来存放筛选后的文件。
 
 [interpolate_spectra.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/interpolate_spectra.py)：对PHOENIX光谱模型进行金属丰度插值。从两个不同金属丰度的光谱目录（例如Z-0.0和Z+0.5）中找到相同参数（温度、重力、alpha元素丰度）的文件对，进行线性插值产生中间金属丰度（如Z+0.25）的光谱。
+
+[synthesize_spectra.py](https://github.com/T-Auto/Python-tools-for-Astronomy/blob/main/tools/synthesize_spectra.py)：根据四个基本输入参数（有效温度Teff、表面重力log g、金属丰度[Fe/H]和α元素丰度[α/Fe]）合成理论恒星光谱。此工具实现了恒星大气模型构建和光谱合成的完整过程，支持多种合成方法，可以将结果保存为FITS文件或图像，方便科学研究和教学使用。
